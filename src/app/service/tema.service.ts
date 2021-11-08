@@ -21,13 +21,16 @@ export class TemaService {
     return this.http.get<Tema[]>('https://danielmendesblog.herokuapp.com/temas', this.token)
   }
 
+  getTemaById(id: number): Observable<Tema>{
+    return this.http.get<Tema>(`https://danielmendesblog.herokuapp.com/temas/${id}`, this.token)
+  }
+
+  getNomeByTema(nome: string): Observable<Tema[]>{
+    return this.http.get<Tema[]>(`https://danielmendesblog.herokuapp.com/temas/nome/${nome}`, this.token)
+  }
   
   postTema(tema: Tema): Observable<Tema>{
     return this.http.post<Tema>('https://danielmendesblog.herokuapp.com/temas', tema, this.token)
-  }
-  
-  getTemaById(id: number): Observable<Tema>{
-    return this.http.get<Tema>(`https://danielmendesblog.herokuapp.com/temas/${id}`, this.token)
   }
   
   putTema(tema: Tema): Observable<Tema>{
